@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './filter.component.scss',
 })
 export class FilterComponent {
-  @Input() category: any;
+  @Input() public category: any;
+  @Input() public isSelectable = true;
+  @Input() public isSelected = false;
+
+  public isHovered = false;
 }
