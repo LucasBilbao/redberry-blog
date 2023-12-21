@@ -1,0 +1,16 @@
+@use "../../../../globals.scss" as globals;
+
+section.center {
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    row-gap: globals.pxToRem(56);
+    column-gap: globals.pxToRem(32);
+    flex-wrap: wrap;
+    width: 100%;
+
+    li {
+      max-width: 32%;
+    }
+  }
+}

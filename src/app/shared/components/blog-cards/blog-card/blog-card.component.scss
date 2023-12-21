@@ -1,0 +1,70 @@
+@use "../../../../../globals.scss" as globals;
+
+:host {
+  width: 100%;
+  height: fit-content;
+  display: inline-block;
+  color: #1a1a1f;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    aspect-ratio: 408/328;
+    display: inline-block;
+    object-fit: cover;
+    border-radius: globals.pxToRem(12);
+  }
+
+  div.info_wrapper {
+    margin-top: globals.pxToRem(24);
+
+    *:not(:first-child) {
+      margin-top: globals.pxToRem(16);
+    }
+
+    div.blog_info {
+      h4 {
+        @include globals.font(16, 20, 500);
+      }
+
+      time {
+        @include globals.font(12, 16, 200);
+        margin-top: globals.pxToRem(8);
+        color: #85858d;
+      }
+    }
+
+    h3 {
+      @include globals.font(20, 28, 500);
+    }
+
+    ::ng-deep {
+      section.center {
+        margin: globals.pxToRem(16) 0 0;
+        ul {
+          justify-content: flex-start;
+
+          width: 100%;
+          gap: globals.pxToRem(16);
+          // gap: 0;
+        }
+      }
+    }
+
+    p {
+      @include globals.font(16, 28, 400);
+      color: #404049;
+    }
+
+    a {
+      display: inline-block;
+      @include globals.font(14, 20, 500);
+      color: #5d37f3;
+      fa-icon {
+        width: globals.pxToRem(20);
+        height: globals.pxToRem(20);
+        margin-right: globals.pxToRem(4);
+      }
+    }
+  }
+}

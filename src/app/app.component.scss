@@ -1,0 +1,9 @@
+@use "../globals.scss" as globals;
+
+header {
+  background: #fff;
+}
+
+main {
+  margin-bottom: globals.pxToRem(66);
+}
