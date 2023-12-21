@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./globals.scss" as globals;
+@import url("https://free.bboxtype.com/embedfonts/?family=FiraGO:400,500,700");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "FiraGO", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  font-size: #{globals.$PX_SIZE}px;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #f3f2fa no-repeat;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  li {
+    all: unset;
+  }
+}
+
+fieldset {
+  all: unset;
+  legend {
+    all: unset;
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+
+.center {
+  width: 89.4%;
+  max-width: globals.pxToRem(1716.48);
+  margin: auto;
+  margin-top: globals.pxToRem(64);
+}
+
+input {
+  all: unset;
+}
