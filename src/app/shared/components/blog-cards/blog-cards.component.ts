@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './blog-cards.component.scss',
 })
 export class BlogCardsComponent {
-  public nums = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11];
+  public nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 }
