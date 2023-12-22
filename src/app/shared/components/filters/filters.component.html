@@ -1,0 +1,12 @@
+<section class="center">
+  <ul>
+    @if(categories){ @for (category of categories; track $index) {
+    <li>
+      <rb-filter
+        [category]="category"
+        [isSelectable]="isSelectable"
+      ></rb-filter>
+    </li>
+    } }
+  </ul>
+</section>

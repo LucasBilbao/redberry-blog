@@ -1,0 +1,18 @@
+@if(blog) {
+<img [src]="blog.image" [alt]="blog.title" />
+<div class="info_wrapper">
+  <div class="blog_info">
+    <h4>{{ blog.author }}</h4>
+    <time>02.11.2023</time>
+  </div>
+  <h3>{{ blog.title | punctuation : 100 }}</h3>
+  <rb-filters
+    [categories]="blog.categories"
+    [isSelectable]="false"
+  ></rb-filters>
+  <p>{{ blog.description | punctuation : 107 }}</p>
+  <a class="blog_detail_link">
+    სრულად ნახვა <fa-icon [icon]="faExternalLink"></fa-icon>
+  </a>
+</div>
+}

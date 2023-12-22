@@ -1,0 +1,10 @@
+@use "../../../../globals.scss" as globals;
+
+section.center {
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: globals.pxToRem(24);
+  }
+}

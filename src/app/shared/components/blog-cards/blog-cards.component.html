@@ -1,0 +1,11 @@
+<section class="center">
+  <ul>
+    @for (blog of (blogs$ | async); track $index) {
+    <li>
+      <rb-blog-card [blog]="blog"></rb-blog-card>
+    </li>
+    } @empty {
+    <h3>არ არსებობს ბლოგი. <a>შექმენით ბლოგი.</a></h3>
+    }
+  </ul>
+</section>

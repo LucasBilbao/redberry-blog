@@ -1,0 +1,8 @@
+@use "../../../../../globals.scss" as globals;
+
+button {
+  padding: globals.pxToRem(8) globals.pxToRem(16);
+  border-radius: globals.pxToRem(30);
+  @include globals.font(12, 16, 500);
+  transition: all 0.3s ease-out;
+}
