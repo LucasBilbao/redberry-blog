@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Category } from '../../../interfaces/category.interface';
 
 @Component({
   selector: 'rb-filters',
@@ -6,5 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './filters.component.scss',
 })
 export class FiltersComponent {
-  @Input() public categories: any;
+  @Input() public categories!: Category[] | null;
+  @Input() public isSelectable: boolean = true;
 }

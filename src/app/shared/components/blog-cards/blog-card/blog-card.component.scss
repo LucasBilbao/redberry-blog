@@ -46,7 +46,10 @@
 
           width: 100%;
           gap: globals.pxToRem(16);
-          // gap: 0;
+
+          button {
+            cursor: auto;
+          }
         }
       }
     }
@@ -59,7 +62,7 @@
     a {
       display: inline-block;
       @include globals.font(14, 20, 500);
-      color: #5d37f3;
+      color: globals.$LINK_PRIMARY_COLOR;
       fa-icon {
         width: globals.pxToRem(20);
         height: globals.pxToRem(20);
