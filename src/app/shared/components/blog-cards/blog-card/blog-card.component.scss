@@ -2,7 +2,7 @@
 
 :host {
   width: 100%;
-  height: fit-content;
+  height: 100%;
   display: inline-block;
   color: #1a1a1f;
   overflow: hidden;
@@ -41,14 +41,18 @@
     ::ng-deep {
       section.center {
         margin: globals.pxToRem(16) 0 0;
+        width: 100%;
         ul {
           justify-content: flex-start;
+          flex-wrap: nowrap;
+          overflow-x: hidden;
 
           width: 100%;
           gap: globals.pxToRem(16);
 
           button {
             cursor: auto;
+            white-space: nowrap;
           }
         }
       }
@@ -59,11 +63,12 @@
       color: #404049;
     }
 
-    a {
-      display: inline-block;
+    a.blog_detail_link {
+      display: block;
       @include globals.font(14, 20, 500);
       color: globals.$LINK_PRIMARY_COLOR;
       fa-icon {
+        display: inline-block;
         width: globals.pxToRem(20);
         height: globals.pxToRem(20);
         margin-right: globals.pxToRem(4);
