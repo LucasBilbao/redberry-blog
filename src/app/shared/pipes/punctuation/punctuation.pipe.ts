@@ -9,7 +9,7 @@ export class PunctuationPipe implements PipeTransform {
     value: string,
     size: number,
     punctuation: string = '...'
-  ): unknown {
+  ): string {
     if (value.length <= size) {
       return value;
     }
