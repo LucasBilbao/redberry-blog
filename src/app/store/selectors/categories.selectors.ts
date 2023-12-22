@@ -7,17 +7,19 @@ import {
 export const categoriesFeatureSelector =
   createFeatureSelector<CategoriesState>(categoriesFeatureKey);
 
-export const categoriesSelector = createSelector(
-  categoriesFeatureSelector,
-  (state: CategoriesState) => state.categories
-);
+export const CategoriesSelectors = {
+  categoriesSelector: createSelector(
+    categoriesFeatureSelector,
+    (state: CategoriesState) => state.categories
+  ),
 
-export const isLoadingSelector = createSelector(
-  categoriesFeatureSelector,
-  (state: CategoriesState) => state.isLoading
-);
+  isLoadingSelector: createSelector(
+    categoriesFeatureSelector,
+    (state: CategoriesState) => state.isLoading
+  ),
 
-export const errorMessageSelector = createSelector(
-  categoriesFeatureSelector,
-  (state: CategoriesState) => state.errorMessage
-);
+  errorMessageSelector: createSelector(
+    categoriesFeatureSelector,
+    (state: CategoriesState) => state.errorMessage
+  ),
+};

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as CategoriesSelectors from '../selectors/categories.selectors';
-import * as CategoriesActions from '../actions/categories.actions';
+import { CategoriesSelectors } from '../selectors/categories.selectors';
+import { CategoriesActions } from '../actions/categories.actions';
 import { State } from '..';
 import { Store } from '@ngrx/store';
 

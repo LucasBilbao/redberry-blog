@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Category } from '../../interfaces/category.interface';
-import * as CategoriesActions from '../actions/categories.actions';
+import { CategoriesActions } from '../actions/categories.actions';
 
 export const categoriesFeatureKey = 'categories';
 
