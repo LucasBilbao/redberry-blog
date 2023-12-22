@@ -10,7 +10,7 @@ import { GetCategoryResponse } from '../../interfaces/category.interface';
 export class CategoryService {
   constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<GetCategoryResponse> {
+  public getCategories(): Observable<GetCategoryResponse> {
     return this.http.get<GetCategoryResponse>(
       CategoryEndpoints.GET_ALL_CATEGORIES
     );
