@@ -1,21 +1,16 @@
-<img
-  src="https://media.istockphoto.com/id/1160446488/photo/tbilisi-downtown-georgia-taken-in-april-2019.jpg?s=612x612&w=0&k=20&c=yybfqVCUZsy8qNWMnpmX1AjAmbuXtj5Kg5aekaeHj7M="
-  alt=""
-/>
+@if(blog) {
+<img [src]="blog.image" [alt]="blog.title" />
 <div class="info_wrapper">
   <div class="blog_info">
-    <h4>ნია გოგსაძე</h4>
+    <h4>{{ blog.author }}</h4>
     <time>02.11.2023</time>
   </div>
-  <h3>
-    {{
-      "EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა fdsafds afdsa afdsaffdsafdsafdsafafdsaf  dsfa fsa fdsa afds "
-        | punctuation : 100
-    }}
-  </h3>
-  <rb-filters [categories]="categories" [isSelectable]="false"></rb-filters>
-  <p>
-    {{ description | punctuation : 107 }}
-  </p>
+  <h3>{{ blog.title | punctuation : 100 }}</h3>
+  <rb-filters
+    [categories]="blog.categories"
+    [isSelectable]="false"
+  ></rb-filters>
+  <p>{{ blog.description | punctuation : 107 }}</p>
   <a>სრულად ნახვა <fa-icon [icon]="faExternalLink"></fa-icon></a>
 </div>
+}
