@@ -1,0 +1,27 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div.spinner {
+    width: globals.pxToRem(150);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: globals.pxToRem(10) solid globals.$LINK_PRIMARY_COLOR;
+    clip-path: polygon(0% 0%, 100% 00%, 100% 50%, 0% 50%);
+    animation: rotation 1.5s ease 0s infinite forwards;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
