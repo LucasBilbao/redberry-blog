@@ -5,7 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true,
 })
 export class PunctuationPipe implements PipeTransform {
-  transform(value: string, size: number, punctuation: string = '...'): unknown {
+  public transform(
+    value: string,
+    size: number,
+    punctuation: string = '...'
+  ): unknown {
     if (value.length <= size) {
       return value;
     }

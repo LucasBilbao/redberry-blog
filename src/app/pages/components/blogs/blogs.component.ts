@@ -14,7 +14,7 @@ export class BlogsComponent implements OnInit {
 
   constructor(private categoriesFacade: CategoriesStateFacade) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.categoriesFacade.getAllCategories();
   }
 }

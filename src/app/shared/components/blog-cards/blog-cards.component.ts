@@ -13,7 +13,7 @@ export class BlogCardsComponent implements OnInit {
 
   constructor(private blogsFacade: BlogsStateFacade) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.blogsFacade.getAllBlogs();
   }
 }
