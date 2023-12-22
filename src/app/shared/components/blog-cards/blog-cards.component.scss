@@ -12,5 +12,13 @@ section.center {
     li {
       max-width: 32%;
     }
+
+    & > h3 {
+      margin: auto;
+
+      a {
+        color: globals.$LINK_PRIMARY_COLOR;
+      }
+    }
   }
 }
