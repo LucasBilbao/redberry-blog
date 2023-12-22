@@ -1,5 +1,7 @@
 $PX_SIZE: 16;
 
+$LINK_PRIMARY_COLOR: #5d37f3;
+
 @function calcFontSizeInRem($font_size_px) {
   @return calc($font_size_px / $PX_SIZE);
 }
