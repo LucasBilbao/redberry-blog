@@ -10,3 +10,7 @@ export interface Blog {
   author: string;
   email?: string;
 }
+
+export interface GetBlogsResponse {
+  data: Blog[];
+}
