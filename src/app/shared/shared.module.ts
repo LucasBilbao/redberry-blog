@@ -9,6 +9,7 @@ import { FilterComponent } from './components/filters/filter/filter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HexToRgbaPipe } from './pipes/hex-to-rgba/hex-to-rgba.pipe';
 import { PunctuationPipe } from './pipes/punctuation/punctuation.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 const components = [
   HeaderComponent,
@@ -17,6 +18,7 @@ const components = [
   BlogCardsComponent,
   BlogCardComponent,
   FilterComponent,
+  LoaderComponent,
 ];
 
 const pipes = [HexToRgbaPipe, PunctuationPipe];

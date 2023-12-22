@@ -1,6 +1,10 @@
+@if(!(isLoading$ | async)) {
 <header>
   <rb-header></rb-header>
 </header>
 <main>
   <rb-blogs></rb-blogs>
 </main>
+} @else {
+<rb-loader></rb-loader>
+}

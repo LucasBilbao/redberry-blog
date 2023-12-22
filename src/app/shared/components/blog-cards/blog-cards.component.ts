@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Blog } from '../../../interfaces/blog.interface';
 import { BlogsStateFacade } from '../../../store/facades/blogs.facade';
@@ -8,12 +8,8 @@ import { BlogsStateFacade } from '../../../store/facades/blogs.facade';
   templateUrl: './blog-cards.component.html',
   styleUrl: './blog-cards.component.scss',
 })
-export class BlogCardsComponent implements OnInit {
+export class BlogCardsComponent {
   public blogs$: Observable<Blog[]> = this.blogsFacade.blogs$;
 
   constructor(private blogsFacade: BlogsStateFacade) {}
-
-  public ngOnInit(): void {
-    this.blogsFacade.getAllBlogs();
-  }
 }
