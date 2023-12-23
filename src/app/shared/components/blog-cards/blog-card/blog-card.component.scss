@@ -44,8 +44,6 @@
         width: 100%;
         ul {
           justify-content: flex-start;
-          flex-wrap: nowrap;
-          overflow-x: hidden;
 
           width: 100%;
           gap: globals.pxToRem(16);
