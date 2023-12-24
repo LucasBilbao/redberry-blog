@@ -4,7 +4,7 @@ import { BlogsComponent } from './pages/components/blogs/blogs.component';
 
 const routes: Routes = [
   { path: 'blogs', component: BlogsComponent },
-  { path: 'blog/:id', component: BlogsComponent },
+  { path: 'blogs/:id', component: BlogsComponent },
   { path: '', pathMatch: 'full', redirectTo: 'blogs' },
   { path: '**', redirectTo: 'blogs' },
 ];
