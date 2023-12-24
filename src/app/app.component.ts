@@ -6,13 +6,14 @@ import { CategoriesStateFacade } from './store/facades/categories.facades';
 import { ModalService } from './services/modal/modal.service';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from './services/filter/filter.service';
+import { Subscribable } from './shared/components/subscribable/subscribable';
 
 @Component({
   selector: 'rb-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent extends Subscribable implements OnInit {
   public isLoading$: Observable<boolean> =
     this.loadingService.isSomethingLoading$;
   public isModalOpen$: Observable<boolean> = this.modalService.isModalOpen$;
@@ -24,22 +25,26 @@ export class AppComponent implements OnInit {
     private modalService: ModalService,
     private route: ActivatedRoute,
     private filterService: FilterService
-  ) {}
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
     this.blogsFacade.getAllBlogs();
     this.categoriesFacade.getAllCategories();
 
-    this.route.queryParams.subscribe((queries) => {
-      if (!queries['categories']) {
-        return;
-      }
+    this.addSubscription(
+      this.route.queryParams.subscribe((queries) => {
+        if (!queries['categories']) {
+          return;
+        }
 
-      const categories = queries['categories']
-        .split(',')
-        .map((category: string) => Number.parseInt(category));
+        const categories = queries['categories']
+          .split(',')
+          .map((category: string) => Number.parseInt(category));
 
-      this.filterService.selectedCategories$ = new Set(categories);
-    });
+        this.filterService.selectedCategories$ = new Set(categories);
+      })
+    );
   }
 }
