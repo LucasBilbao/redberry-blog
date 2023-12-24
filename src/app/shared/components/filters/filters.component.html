@@ -4,7 +4,9 @@
     <li>
       <rb-filter
         [category]="category"
+        [isSelected]="(selectedCategories | async)?.has(category.id) ?? false"
         [isSelectable]="isSelectable"
+        (selectCategory)="onSelectCategory($event)"
       ></rb-filter>
     </li>
     } }

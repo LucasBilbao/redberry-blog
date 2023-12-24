@@ -1,6 +1,6 @@
 <button
   [style]="
-    (isHovered || isSelected) && isSelectable
+    (isHovered && isSelectable) || isSelected
       ? {
           color: category.text_color,
           background: category.background_color
@@ -12,7 +12,7 @@
   "
   (mouseenter)="isHovered = true"
   (mouseleave)="isHovered = false"
-  (click)="isSelected = !isSelected"
+  (click)="onSelectCategory()"
 >
   {{ category.title }}
 </button>
