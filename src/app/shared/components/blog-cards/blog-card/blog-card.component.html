@@ -3,7 +3,9 @@
 <div class="info_wrapper">
   <div class="blog_info">
     <h4>{{ blog.author }}</h4>
-    <time>02.11.2023</time>
+    <time [dateTime]="blog.publish_date">
+      {{ blog.publish_date | date : "dd.MM.YYYY" }}
+    </time>
   </div>
   <h3>{{ blog.title | punctuation : 100 }}</h3>
   <rb-filters
