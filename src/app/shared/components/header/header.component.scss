@@ -11,16 +11,10 @@
     height: globals.pxToRem(24);
   }
 
-  button {
+  button,
+  a.add_blog_link {
     padding: globals.pxToRem(10) globals.pxToRem(20);
     @include globals.font(14, 20, 500);
-    color: white;
-    background: #5d37f3;
-    border-radius: globals.pxToRem(8);
-    transition: background 0.25s ease-out;
-
-    &:hover {
-      background: #3205e9;
-    }
+    @extend %primary_button_placeholder;
   }
 }
