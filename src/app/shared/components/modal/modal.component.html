@@ -1,0 +1,12 @@
+<div class="overlay" (click)="closeModal()"></div>
+<div class="modal_wrapper">
+  <div class="modal">
+    <button (click)="closeModal()"><fa-icon [icon]="faXmark"></fa-icon></button>
+
+    @if(!(isAuthorized$ | async)) {
+    <rb-login-modal-content></rb-login-modal-content>
+    } @else {
+    <rb-operation-success></rb-operation-success>
+    }
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<form (submit)="onLogin($event)">
+  <fieldset>
+    <legend>შესვლა</legend>
+    <div>
+      <label for="email">ელ-ფოსტა</label>
+      <input
+        type="email"
+        id="email"
+        [class.error]="isError$ | async"
+        placeholder="Example@redberry.ge"
+        [formControl]="email"
+      />
+      @if(isError$ | async) {
+      <rb-input-error class="error">
+        <p icon><fa-icon [icon]="faCircleExclamation"></fa-icon></p>
+        <p msg>ელ-ფოსტა არ მოიძებნა</p>
+      </rb-input-error>
+      }
+    </div>
+    <button type="submit">შესვლა</button>
+  </fieldset>
+</form>
