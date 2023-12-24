@@ -1,6 +1,6 @@
 <section class="center">
   <ul>
-    @for (blog of (blogs$ | async); track $index) {
+    @for (blog of blogs; track $index) {
     <li>
       <rb-blog-card [blog]="blog"></rb-blog-card>
     </li>

@@ -42,6 +42,6 @@ const pipes = [HexToRgbaPipe, PunctuationPipe];
     ReactiveFormsModule,
     RouterModule,
   ],
-  exports: [components, pipes, CommonModule, FontAwesomeModule],
+  exports: [components, pipes, CommonModule, FontAwesomeModule, RouterModule],
 })
 export class SharedModule {}

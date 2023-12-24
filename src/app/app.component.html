@@ -1,12 +1,4 @@
-@if(!(isLoading$ | async)) {
-<header>
-  <rb-header></rb-header>
-</header>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<router-outlet></router-outlet>
 @if(isModalOpen$ | async){
 <rb-modal></rb-modal>
-} } @else {
-<rb-loader></rb-loader>
 }

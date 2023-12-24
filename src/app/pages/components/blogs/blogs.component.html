@@ -1,5 +1,9 @@
+@if(!(isLoading$ | async)) {
 <section>
   <rb-title></rb-title>
   <rb-filters [categories]="categories$ | async"></rb-filters>
-  <rb-blog-cards></rb-blog-cards>
+  <rb-blog-cards [blogs]="blogs$ | async"></rb-blog-cards>
 </section>
+} @else {
+<rb-loader></rb-loader>
+}

@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { Blog } from '../../../interfaces/blog.interface';
-import { BlogsStateFacade } from '../../../store/facades/blogs.facade';
-import { FilterService } from '../../../services/filter/filter.service';
 
 @Component({
   selector: 'rb-blog-cards',
@@ -10,7 +7,5 @@ import { FilterService } from '../../../services/filter/filter.service';
   styleUrl: './blog-cards.component.scss',
 })
 export class BlogCardsComponent {
-  public blogs$: Observable<Blog[]> = this.filterService.filteredBlogs$;
-
-  constructor(private filterService: FilterService) {}
+  @Input() public blogs!: Blog[] | null;
 }
