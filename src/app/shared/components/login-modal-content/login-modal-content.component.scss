@@ -1,0 +1,61 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  form {
+    margin-top: globals.pxToRem(40);
+    margin-bottom: globals.pxToRem(40);
+    padding: 0 globals.pxToRem(24);
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      legend {
+        @include globals.font(24, 32, 700);
+        text-align: center;
+      }
+
+      div {
+        margin-top: globals.pxToRem(24);
+        width: globals.pxToRem(432);
+
+        label {
+          @include globals.font(14, 20, 500);
+        }
+
+        input {
+          display: block;
+          margin-top: globals.pxToRem(8);
+          width: 100%;
+          @include globals.font(14, 20, 400);
+          padding: globals.pxToRem(12);
+          border-radius: globals.pxToRem(12);
+          box-sizing: border-box;
+          background: #f2f1ff;
+          transition: border 0.25s ease-out;
+
+          border: globals.pxToRem(1.5) solid rgba(0, 0, 0, 0);
+
+          &:focus {
+            border: globals.pxToRem(1.5) solid globals.$LINK_PRIMARY_COLOR;
+          }
+
+          &.error {
+            background: #faebec;
+
+            &:focus {
+              border: globals.pxToRem(1.5) solid globals.$ERROR_RED;
+            }
+          }
+        }
+      }
+
+      button {
+        margin-top: globals.pxToRem(24);
+        @extend %primary_button_placeholder;
+        @include globals.font(14, 20, 500);
+        padding: globals.pxToRem(10) globals.pxToRem(189.5);
+      }
+    }
+  }
+}

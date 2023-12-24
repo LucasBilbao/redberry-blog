@@ -10,6 +10,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HexToRgbaPipe } from './pipes/hex-to-rgba/hex-to-rgba.pipe';
 import { PunctuationPipe } from './pipes/punctuation/punctuation.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { LoginModalContentComponent } from './components/login-modal-content/login-modal-content.component';
+import { InputErrorComponent } from './components/input-error/input-error.component';
+import { OperationSuccessComponent } from './components/operation-success/operation-success.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   HeaderComponent,
@@ -19,13 +24,17 @@ const components = [
   BlogCardComponent,
   FilterComponent,
   LoaderComponent,
+  ModalComponent,
+  LoginModalContentComponent,
+  InputErrorComponent,
+  OperationSuccessComponent,
 ];
 
 const pipes = [HexToRgbaPipe, PunctuationPipe];
 
 @NgModule({
   declarations: [components, pipes],
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
   exports: [components, pipes, CommonModule, FontAwesomeModule],
 })
 export class SharedModule {}

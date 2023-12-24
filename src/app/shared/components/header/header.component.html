@@ -1,4 +1,8 @@
 <a>
   <img src="../../../../assets/LOGO-02 3.jpg" alt="Redberry Company Logo" />
 </a>
-<button>შესვლა</button>
+@if(!(isAuthorized$ | async)){
+<button (click)="openModal()">შესვლა</button>
+} @else {
+<a class="add_blog_link">დაამატე ბლოგი</a>
+}

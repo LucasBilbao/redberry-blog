@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { ModalService } from '../../../services/modal/modal.service';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from '../../../services/login/login.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'rb-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  selector: 'rb-modal',
+  templateUrl: './modal.component.html',
+  styleUrl: './modal.component.scss',
 })
-export class HeaderComponent {
+export class ModalComponent {
+  public readonly faXmark = faXmark;
   public isAuthorized$: Observable<boolean> = this.loginService.isAuthorized$;
 
   constructor(
@@ -16,7 +18,7 @@ export class HeaderComponent {
     private loginService: LoginService
   ) {}
 
-  public openModal(): void {
-    this.modalService.openModal();
+  public closeModal(): void {
+    this.modalService.closeModal();
   }
 }

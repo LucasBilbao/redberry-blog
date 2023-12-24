@@ -1,6 +1,9 @@
 $PX_SIZE: 16;
 
 $LINK_PRIMARY_COLOR: #5d37f3;
+$ERROR_RED: #ea1919;
+$NEUTRAL_GRAY: #85858d;
+$CORRECT_GREEN: #14d81c;
 
 @function calcFontSizeInRem($font_size_px) {
   @return calc($font_size_px / $PX_SIZE);
@@ -22,4 +25,15 @@ $LINK_PRIMARY_COLOR: #5d37f3;
 @mixin font($font_size_px, $line_height_px, $font_weight: normal) {
   font-weight: $font_weight;
   @include fontSizing($font_size_px, $line_height_px);
+}
+
+%primary_button_placeholder {
+  color: white;
+  background: $LINK_PRIMARY_COLOR;
+  border-radius: pxToRem(8);
+  transition: background 0.25s ease-out;
+
+  &:hover {
+    background: #3205e9;
+  }
 }

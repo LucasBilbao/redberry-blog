@@ -5,6 +5,8 @@
 <main>
   <rb-blogs></rb-blogs>
 </main>
-} @else {
+@if(isModalOpen$ | async){
+<rb-modal></rb-modal>
+} } @else {
 <rb-loader></rb-loader>
 }

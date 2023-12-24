@@ -9,5 +9,5 @@ import { Blog } from '../../../../interfaces/blog.interface';
 })
 export class BlogCardComponent {
   @Input() public blog!: Blog | null;
-  public faExternalLink = faExternalLink;
+  public readonly faExternalLink = faExternalLink;
 }
