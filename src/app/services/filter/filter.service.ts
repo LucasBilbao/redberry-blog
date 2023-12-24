@@ -7,7 +7,10 @@ import { Blog } from '../../interfaces/blog.interface';
   providedIn: 'root',
 })
 export class FilterService {
-  public filteredBlogs$: Observable<Blog[]> = combineLatest(
+  private selectedCategories$$: BehaviorSubject<Set<number>> =
+    new BehaviorSubject(new Set());
+
+  private readonly _filteredBlogs$: Observable<Blog[]> = combineLatest(
     this.selectedCategories$,
     this.blogsFacade.blogs$
   ).pipe(
@@ -21,9 +24,6 @@ export class FilterService {
       );
     })
   );
-
-  private selectedCategories$$: BehaviorSubject<Set<number>> =
-    new BehaviorSubject(new Set());
 
   constructor(private blogsFacade: BlogsStateFacade) {}
 
@@ -66,5 +66,9 @@ export class FilterService {
 
   public set selectedCategories$(selectedCategories: Set<number>) {
     this.selectedCategories$$.next(selectedCategories);
+  }
+
+  public get filteredBlogs$(): Observable<Blog[]> {
+    return this._filteredBlogs$;
   }
 }
