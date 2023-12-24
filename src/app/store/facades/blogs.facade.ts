@@ -10,11 +10,16 @@ import { BlogsSelectors } from '../selectors/blogs.selectors';
 export class BlogsStateFacade {
   public isLoading$ = this.store.select(BlogsSelectors.isLoadingSelector);
   public blogs$ = this.store.select(BlogsSelectors.blogsSelector);
+  public blog$ = this.store.select(BlogsSelectors.singleBlogSelector);
   public errorMessage$ = this.store.select(BlogsSelectors.errorMessageSelector);
 
   constructor(private store: Store<State>) {}
 
   public getAllBlogs() {
     this.store.dispatch(BlogsActions.getAllBlogs());
+  }
+
+  public getSingleBlog(id: string | number) {
+    this.store.dispatch(BlogsActions.getSingleBlog({ id }));
   }
 }

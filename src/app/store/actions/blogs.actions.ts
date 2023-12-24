@@ -3,6 +3,7 @@ import { BlogsConstants } from '../constants/blogs.enum';
 import { Blog } from '../../interfaces/blog.interface';
 
 export const BlogsActions = {
+  // Get All Blogs
   getAllBlogs: createAction(BlogsConstants.GET_ALL_BLOGS),
 
   getAllBlogsSuccess: createAction(
@@ -12,6 +13,22 @@ export const BlogsActions = {
 
   getAllBlogsFail: createAction(
     BlogsConstants.GET_ALL_BLOGS_FAIL,
+    props<{ error: string }>()
+  ),
+
+  // Get Single Blog
+  getSingleBlog: createAction(
+    BlogsConstants.GET_SINGLE_BLOG,
+    props<{ id: string | number }>()
+  ),
+
+  getSingleBlogSuccess: createAction(
+    BlogsConstants.GET_SINGLE_BLOG_SUCCESS,
+    props<{ blog: Blog }>()
+  ),
+
+  getSingleBlogFail: createAction(
+    BlogsConstants.GET_SINGLE_BLOG_FAIL,
     props<{ error: string }>()
   ),
 };

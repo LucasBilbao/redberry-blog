@@ -1,3 +1,3 @@
 export enum BlogEndpoints {
-  GET_ALL_BLOGS = '/blogs',
+  BLOGS = '/blogs',
 }

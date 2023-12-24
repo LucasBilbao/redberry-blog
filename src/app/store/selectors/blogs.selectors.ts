@@ -10,6 +10,11 @@ export const BlogsSelectors = {
     (state: BlogsState) => state.blogs
   ),
 
+  singleBlogSelector: createSelector(
+    blogsFeatureSelector,
+    (state: BlogsState) => state.singleBlog
+  ),
+
   isLoadingSelector: createSelector(
     blogsFeatureSelector,
     (state: BlogsState) => state.isLoading
