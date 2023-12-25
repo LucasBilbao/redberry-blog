@@ -36,4 +36,10 @@ $CORRECT_GREEN: #14d81c;
   &:hover {
     background: #3205e9;
   }
+
+  &:disabled {
+    background: $NEUTRAL_GRAY;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 }

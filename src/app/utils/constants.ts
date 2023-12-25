@@ -1,6 +1,8 @@
 export const BACKEND_URL = 'https://api.blog.redberryinternship.ge/api';
 
 export const BEARER_ACCESS_TOKEN =
-  'Bearer eb7ee32775f1cd0019914e2981380d07cdef4ebff0d89bb2bd06b1a233e951a7';
+  'Bearer 1291ca857cc23a593f066d14d8d52552fcaf4ec2837f53dabe3d3616913fb6d5';
 
 export const EMAIL_LOCAL_STORAGE_KEY = 'email';
+
+export const REDBERRY_EMAIL_SUFFIX = '@redberry.ge';
