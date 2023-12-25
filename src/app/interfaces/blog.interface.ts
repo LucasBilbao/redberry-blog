@@ -5,7 +5,7 @@ export interface Blog {
   title: string;
   description: string;
   image: string;
-  publish_date: Date;
+  publish_date: string | Date;
   categories: Category[];
   author: string;
   email?: string;

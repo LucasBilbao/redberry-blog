@@ -8,4 +8,8 @@ import { Blog } from '../../../interfaces/blog.interface';
 })
 export class BlogCardsComponent {
   @Input() public blogs!: Blog[] | null;
+
+  public isFromEarlierDate(date: string | Date): boolean {
+    return new Date() > new Date(date);
+  }
 }
