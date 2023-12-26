@@ -7,14 +7,16 @@ export const blogsFeatureKey = 'blogs';
 export interface BlogsState {
   blogs: Blog[];
   singleBlog: Blog | null;
-  isLoading: boolean;
+  isSingleBlogLoading: boolean;
+  isAllBlogsLoading: boolean;
   errorMessage: string;
 }
 
 const initialState: BlogsState = {
   blogs: [],
   singleBlog: null,
-  isLoading: false,
+  isSingleBlogLoading: false,
+  isAllBlogsLoading: false,
   errorMessage: '',
 };
 
@@ -23,32 +25,32 @@ export const blogsReducer = createReducer(
   // Get All Blogs
   on(BlogsActions.getAllBlogs, (state) => ({
     ...state,
-    isLoading: true,
+    isAllBlogsLoading: true,
   })),
   on(BlogsActions.getAllBlogsSuccess, (state, action) => ({
     ...state,
-    isLoading: false,
+    isAllBlogsLoading: false,
     blogs: action.blogs,
   })),
   on(BlogsActions.getAllBlogsFail, (state, action) => ({
     ...state,
-    isLoading: false,
+    isAllBlogsLoading: false,
     errorMessage: action.error,
   })),
 
   // Get Single Blogs
   on(BlogsActions.getSingleBlog, (state) => ({
     ...state,
-    isLoading: true,
+    isSingleBlogLoading: true,
   })),
   on(BlogsActions.getSingleBlogSuccess, (state, action) => ({
     ...state,
-    isLoading: false,
+    isSingleBlogLoading: false,
     singleBlog: action.blog,
   })),
   on(BlogsActions.getSingleBlogFail, (state, action) => ({
     ...state,
-    isLoading: false,
+    isSingleBlogLoading: false,
     errorMessage: action.error,
   }))
 );

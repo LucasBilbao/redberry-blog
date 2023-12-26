@@ -3,12 +3,16 @@ import { State } from '..';
 import { BlogsActions } from '../actions/blogs.actions';
 import { Store } from '@ngrx/store';
 import { BlogsSelectors } from '../selectors/blogs.selectors';
+import { combineLatest, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogsStateFacade {
-  public isLoading$ = this.store.select(BlogsSelectors.isLoadingSelector);
+  public isLoading$ = combineLatest(
+    this.store.select(BlogsSelectors.isAllBlogsLoadingSelector),
+    this.store.select(BlogsSelectors.isSingleBlogLoadingSelector)
+  ).pipe(map((allLoadings) => allLoadings.some((isLoading) => isLoading)));
   public blogs$ = this.store.select(BlogsSelectors.blogsSelector);
   public blog$ = this.store.select(BlogsSelectors.singleBlogSelector);
   public errorMessage$ = this.store.select(BlogsSelectors.errorMessageSelector);

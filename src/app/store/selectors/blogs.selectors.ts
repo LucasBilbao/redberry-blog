@@ -15,9 +15,14 @@ export const BlogsSelectors = {
     (state: BlogsState) => state.singleBlog
   ),
 
-  isLoadingSelector: createSelector(
+  isAllBlogsLoadingSelector: createSelector(
     blogsFeatureSelector,
-    (state: BlogsState) => state.isLoading
+    (state: BlogsState) => state.isAllBlogsLoading
+  ),
+
+  isSingleBlogLoadingSelector: createSelector(
+    blogsFeatureSelector,
+    (state: BlogsState) => state.isSingleBlogLoading
   ),
 
   errorMessageSelector: createSelector(
