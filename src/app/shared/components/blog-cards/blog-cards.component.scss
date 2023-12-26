@@ -1,7 +1,7 @@
 @use "../../../../globals.scss" as globals;
 
-section.center {
-  ul {
+section.center.blogs_section {
+  ul.blogs {
     display: flex;
     justify-content: flex-start;
     row-gap: globals.pxToRem(56);
@@ -10,7 +10,9 @@ section.center {
     width: 100%;
 
     li {
+      min-width: 32%;
       max-width: 32%;
+      flex-grow: 4;
     }
 
     & > h3 {

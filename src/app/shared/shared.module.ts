@@ -16,6 +16,8 @@ import { InputErrorComponent } from './components/input-error/input-error.compon
 import { OperationSuccessComponent } from './components/operation-success/operation-success.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BlogComponent } from './components/blog/blog.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 const components = [
   HeaderComponent,
@@ -29,6 +31,8 @@ const components = [
   LoginModalContentComponent,
   InputErrorComponent,
   OperationSuccessComponent,
+  BlogComponent,
+  SliderComponent,
 ];
 
 const pipes = [HexToRgbaPipe, PunctuationPipe];

@@ -1,0 +1,68 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  display: block;
+  margin-top: globals.pxToRem(96);
+
+  div.slider {
+    display: flex;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h4 {
+        @include globals.font(32, 40, 700);
+      }
+      &__btns {
+        display: flex;
+        button {
+          @extend %primary_button_placeholder;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          $size: globals.pxToRem(44);
+
+          width: $size;
+          height: $size;
+          background: white;
+          border-radius: 50%;
+          color: black;
+
+          &:hover:enabled {
+            background: #4721dd;
+          }
+
+          &:disabled {
+            color: white;
+            opacity: 0.4;
+          }
+
+          & + button {
+            margin-left: globals.pxToRem(24);
+          }
+        }
+      }
+    }
+
+    div.blogs_wrapper {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      margin-top: globals.pxToRem(40);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ::ng-deep {
+        section.center.blogs_section {
+          margin: 0;
+          width: 100%;
+          ul.blogs {
+            flex-wrap: nowrap;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}

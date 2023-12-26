@@ -4,6 +4,8 @@ import { Subscribable } from '../../../shared/components/subscribable/subscribab
 import { BlogsStateFacade } from '../../../store/facades/blogs.facade';
 import { Observable } from 'rxjs';
 import { Blog } from '../../../interfaces/blog.interface';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { SingleBlogService } from '../../../services/single-blog/single-blog.service';
 
 @Component({
   selector: 'rb-single-blog',
@@ -11,11 +13,16 @@ import { Blog } from '../../../interfaces/blog.interface';
   styleUrl: './single-blog.component.scss',
 })
 export class SingleBlogComponent extends Subscribable implements OnInit {
-  public blog$: Observable<Blog | null> = this.blogsFacade.blog$;
+  public isLoading$: Observable<boolean> = this.blogsFacade.isLoading$;
+  public blog$: Observable<Blog | null> = this.singleBlogService.blog$;
+  public similarBlogs$: Observable<Blog[]> =
+    this.singleBlogService.similarBlogs$;
+  public readonly faChevronLeft = faChevronLeft;
 
   constructor(
     private route: ActivatedRoute,
-    private blogsFacade: BlogsStateFacade
+    private blogsFacade: BlogsStateFacade,
+    private singleBlogService: SingleBlogService
   ) {
     super();
   }
@@ -29,6 +36,7 @@ export class SingleBlogComponent extends Subscribable implements OnInit {
 
         const id = params.get('id');
         this.blogsFacade.getSingleBlog(`${id}`);
+        this.blogsFacade.getAllBlogs();
       })
     );
   }
