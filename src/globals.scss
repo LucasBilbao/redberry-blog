@@ -31,9 +31,10 @@ $CORRECT_GREEN: #14d81c;
   color: white;
   background: $LINK_PRIMARY_COLOR;
   border-radius: pxToRem(8);
-  transition: background 0.25s ease-out;
+  transition: all 0.25s ease-out;
 
-  &:hover {
+  &:hover:enabled {
+    color: white;
     background: #3205e9;
   }
 
