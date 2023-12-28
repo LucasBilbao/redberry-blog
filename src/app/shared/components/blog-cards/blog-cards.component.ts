@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  Component,
+  ElementRef,
+  Input,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { Blog } from '../../../interfaces/blog.interface';
-import { BlogsStateFacade } from '../../../store/facades/blogs.facade';
-import { FilterService } from '../../../services/filter/filter.service';
 
 @Component({
   selector: 'rb-blog-cards',
@@ -10,7 +13,11 @@ import { FilterService } from '../../../services/filter/filter.service';
   styleUrl: './blog-cards.component.scss',
 })
 export class BlogCardsComponent {
-  public blogs$: Observable<Blog[]> = this.filterService.filteredBlogs$;
+  @Input() public blogs!: Blog[] | null;
+  @ViewChildren('blogListElement')
+  public blogListElement?: QueryList<ElementRef>;
 
-  constructor(private filterService: FilterService) {}
+  public isFromEarlierDate(date: string | Date): boolean {
+    return new Date() > new Date(date);
+  }
 }

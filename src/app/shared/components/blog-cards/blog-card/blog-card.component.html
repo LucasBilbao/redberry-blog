@@ -3,7 +3,9 @@
 <div class="info_wrapper">
   <div class="blog_info">
     <h4>{{ blog.author }}</h4>
-    <time>02.11.2023</time>
+    <time [dateTime]="blog.publish_date">
+      {{ blog.publish_date | date : "dd.MM.YYYY" }}
+    </time>
   </div>
   <h3>{{ blog.title | punctuation : 100 }}</h3>
   <rb-filters
@@ -11,7 +13,11 @@
     [isSelectable]="false"
   ></rb-filters>
   <p>{{ blog.description | punctuation : 107 }}</p>
-  <a class="blog_detail_link">
+  <a
+    class="blog_detail_link"
+    [routerLink]="['/blogs', blog.id]"
+    queryParamsHandling="merge"
+  >
     სრულად ნახვა <fa-icon [icon]="faExternalLink"></fa-icon>
   </a>
 </div>

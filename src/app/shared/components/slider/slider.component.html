@@ -1,0 +1,24 @@
+@if(blogs){
+<div class="slider">
+  <div class="slider__header">
+    <h4>მსგავსი სტატიები</h4>
+    <div class="slider__header__btns">
+      <button
+        (click)="slideInDirection(-1)"
+        [disabled]="!(isAbleToSlideLeft$ | async)"
+      >
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+      </button>
+      <button
+        (click)="slideInDirection(1)"
+        [disabled]="!(isAbleToSlideRight$ | async)"
+      >
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <div class="blogs_wrapper">
+    <rb-blog-cards [blogs]="blogs" #blogCards></rb-blog-cards>
+  </div>
+</div>
+}

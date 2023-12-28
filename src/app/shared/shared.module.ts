@@ -15,6 +15,9 @@ import { LoginModalContentComponent } from './components/login-modal-content/log
 import { InputErrorComponent } from './components/input-error/input-error.component';
 import { OperationSuccessComponent } from './components/operation-success/operation-success.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { BlogComponent } from './components/blog/blog.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 const components = [
   HeaderComponent,
@@ -28,13 +31,21 @@ const components = [
   LoginModalContentComponent,
   InputErrorComponent,
   OperationSuccessComponent,
+  BlogComponent,
+  SliderComponent,
 ];
 
 const pipes = [HexToRgbaPipe, PunctuationPipe];
 
 @NgModule({
   declarations: [components, pipes],
-  imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
-  exports: [components, pipes, CommonModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
+  exports: [components, pipes, CommonModule, FontAwesomeModule, RouterModule],
 })
 export class SharedModule {}

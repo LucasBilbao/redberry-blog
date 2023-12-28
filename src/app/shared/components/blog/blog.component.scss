@@ -1,0 +1,71 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  display: block;
+  margin: auto;
+  max-width: globals.pxToRem(720);
+  article {
+    img {
+      display: inline-block;
+      width: 100%;
+      aspect-ratio: 720/328;
+      object-fit: cover;
+      border-radius: globals.pxToRem(12);
+    }
+
+    div.author_info {
+      margin-top: globals.pxToRem(40);
+      h3 {
+        @include globals.font(16, 20, 500);
+        color: #1a1a1f;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        @include globals.font(12, 16, 400);
+        color: globals.$NEUTRAL_GRAY;
+        margin-top: globals.pxToRem(8);
+
+        &.bullet_point {
+          $size: globals.pxToRem(3);
+          width: $size;
+          height: $size;
+
+          margin: 0 globals.pxToRem(4) 0;
+
+          border-radius: 50%;
+          background: globals.$NEUTRAL_GRAY;
+        }
+      }
+    }
+
+    h2 {
+      margin-top: globals.pxToRem(24);
+      @include globals.font(32, 40, 700);
+    }
+
+    ::ng-deep {
+      section.center {
+        margin: globals.pxToRem(24) 0 0;
+        width: 100%;
+        ul {
+          justify-content: flex-start;
+
+          width: 100%;
+          gap: globals.pxToRem(16);
+
+          button {
+            cursor: auto;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    & > p {
+      margin-top: globals.pxToRem(40);
+      @include globals.font(16, 28, 400);
+    }
+  }
+}

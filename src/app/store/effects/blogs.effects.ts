@@ -7,19 +7,31 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class BlogsEffects {
-  constructor(private action$: Actions, private blogService: BlogsService) {}
+  constructor(private action$: Actions, private blogsService: BlogsService) {}
 
   public getAllBlogs$ = createEffect(() =>
     this.action$.pipe(
       ofType(BlogsActions.getAllBlogs),
       mergeMap(() =>
-        this.blogService
+        this.blogsService
           .getAllBlogs()
           .pipe(
             map(({ data: blogs }) => BlogsActions.getAllBlogsSuccess({ blogs }))
           )
       ),
       catchError((error) => of(BlogsActions.getAllBlogsFail(error.message)))
+    )
+  );
+
+  public getSingleBlog$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(BlogsActions.getSingleBlog),
+      mergeMap(({ id }) =>
+        this.blogsService
+          .getSingleBlog(id)
+          .pipe(map((blog) => BlogsActions.getSingleBlogSuccess({ blog })))
+      ),
+      catchError((error) => of(BlogsActions.getSingleBlogFail(error.message)))
     )
   );
 }

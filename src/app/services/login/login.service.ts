@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { LoginEndpoints } from '../../utils/login-endpoints.enum';
 import { EMAIL_LOCAL_STORAGE_KEY } from '../../utils/constants';
+import { LoginRequest } from '../../interfaces/login-request.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,7 @@ export class LoginService {
   }
 
   public login(email: string): Observable<any> {
-    return this.http.post(LoginEndpoints.LOGIN, { email }).pipe(
+    return this.http.post<LoginRequest>(LoginEndpoints.LOGIN, { email }).pipe(
       tap(() => {
         this.assignValues(email, true);
       })
