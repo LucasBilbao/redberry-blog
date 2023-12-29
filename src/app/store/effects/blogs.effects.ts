@@ -34,4 +34,16 @@ export class BlogsEffects {
       catchError((error) => of(BlogsActions.getSingleBlogFail(error.message)))
     )
   );
+
+  public postBlog$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(BlogsActions.postBlog),
+      mergeMap((blog) =>
+        this.blogsService
+          .postBlog(blog)
+          .pipe(map(() => BlogsActions.postBlogSuccess()))
+      ),
+      catchError((error) => of(BlogsActions.postBlogFail(error.message)))
+    )
+  );
 }

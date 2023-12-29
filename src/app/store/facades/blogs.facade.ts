@@ -16,6 +16,12 @@ export class BlogsStateFacade {
   public blogs$ = this.store.select(BlogsSelectors.blogsSelector);
   public blog$ = this.store.select(BlogsSelectors.singleBlogSelector);
   public errorMessage$ = this.store.select(BlogsSelectors.errorMessageSelector);
+  public hasStartedPosting$ = this.store.select(
+    BlogsSelectors.hasStartedPosting
+  );
+  public hasFinishedPosting$ = this.store.select(
+    BlogsSelectors.hasFinishedPosting
+  );
 
   constructor(private store: Store<State>) {}
 
@@ -25,5 +31,9 @@ export class BlogsStateFacade {
 
   public getSingleBlog(id: string | number) {
     this.store.dispatch(BlogsActions.getSingleBlog({ id }));
+  }
+
+  public postBlog(blog: FormData) {
+    this.store.dispatch(BlogsActions.postBlog({ blog }));
   }
 }

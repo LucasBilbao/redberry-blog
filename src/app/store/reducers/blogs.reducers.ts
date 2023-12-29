@@ -9,6 +9,8 @@ export interface BlogsState {
   singleBlog: Blog | null;
   isSingleBlogLoading: boolean;
   isAllBlogsLoading: boolean;
+  hasFinishedPosting: boolean;
+  hasStartedPosting: boolean;
   errorMessage: string;
 }
 
@@ -17,6 +19,8 @@ const initialState: BlogsState = {
   singleBlog: null,
   isSingleBlogLoading: false,
   isAllBlogsLoading: false,
+  hasFinishedPosting: false,
+  hasStartedPosting: false,
   errorMessage: '',
 };
 
@@ -38,7 +42,7 @@ export const blogsReducer = createReducer(
     errorMessage: action.error,
   })),
 
-  // Get Single Blogs
+  // Get Single Blog
   on(BlogsActions.getSingleBlog, (state) => ({
     ...state,
     isSingleBlogLoading: true,
@@ -51,6 +55,25 @@ export const blogsReducer = createReducer(
   on(BlogsActions.getSingleBlogFail, (state, action) => ({
     ...state,
     isSingleBlogLoading: false,
+    errorMessage: action.error,
+  })),
+
+  // Post Blog
+  on(BlogsActions.postBlog, (state) => ({
+    ...state,
+    isSingleBlogLoading: true,
+    hasFinishedPosting: false,
+    hasStartedPosting: true,
+  })),
+  on(BlogsActions.postBlogSuccess, (state) => ({
+    ...state,
+    isSingleBlogLoading: false,
+    hasFinishedPosting: true,
+  })),
+  on(BlogsActions.postBlogFail, (state, action) => ({
+    ...state,
+    isSingleBlogLoading: false,
+    hasFinishedPosting: true,
     errorMessage: action.error,
   }))
 );
