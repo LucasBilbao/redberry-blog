@@ -5,8 +5,10 @@
 
     @if(!(isAuthorized$ | async)) {
     <rb-login-modal-content></rb-login-modal-content>
+    } @else { @if((isAuthorizing$ | async)){
+    <rb-authorization-success></rb-authorization-success>
     } @else {
-    <rb-operation-success></rb-operation-success>
-    }
+    <rb-publication-success></rb-publication-success>
+    } }
   </div>
 </div>
