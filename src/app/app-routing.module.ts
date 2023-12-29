@@ -4,6 +4,7 @@ import { BlogsComponent } from './pages/components/blogs/blogs.component';
 import { SingleBlogComponent } from './pages/components/single-blog/single-blog.component';
 import { PagesWrapperComponent } from './pages/components/pages-wrapper/pages-wrapper.component';
 import { CreateBlogComponent } from './pages/components/create-blog/create-blog.component';
+import { authorizedGuard } from './guards/authorized-guard.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
     component: PagesWrapperComponent,
     children: [
       { path: '', component: BlogsComponent },
-      { path: 'create', component: CreateBlogComponent },
+      {
+        path: 'create',
+        component: CreateBlogComponent,
+        canActivate: [authorizedGuard()],
+      },
       { path: ':id', component: SingleBlogComponent },
     ],
   },
