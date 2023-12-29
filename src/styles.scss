@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./globals.scss" as globals;
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("./assets/fonts/FiraGO/FiraGO-Regular.otf") format("opentype"),
+    url("./assets/fonts/FiraGO/FiraGO-Regular.ttf") format("truetype");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "FiraGO", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  font-size: #{globals.$PX_SIZE}px;
+}
+
+textarea::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  width: globals.pxToRem(8);
+}
+
+html::-webkit-scrollbar {
+  width: 0.8vw;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(86, 90, 90, 0.205);
+  border-radius: globals.pxToRem(500);
+  cursor: pointer;
+  &:hover {
+    background: rgba(86, 90, 90, 0.473);
+  }
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #f3f2fa no-repeat;
+
+  &.no_scroll {
+    overflow-y: hidden;
+  }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  li {
+    all: unset;
+  }
+}
+
+fieldset {
+  all: unset;
+  legend {
+    all: unset;
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+
+.center {
+  width: 89.4%;
+  max-width: globals.pxToRem(1716.48);
+  margin: auto;
+  margin-top: globals.pxToRem(64);
+}
+
+input {
+  all: unset;
+}

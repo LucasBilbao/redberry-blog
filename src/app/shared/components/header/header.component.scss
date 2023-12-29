@@ -1,0 +1,26 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  div.header_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: globals.pxToRem(20) globals.pxToRem(76);
+
+    img {
+      width: globals.pxToRem(150);
+      height: globals.pxToRem(24);
+    }
+
+    button,
+    a.add_blog_link {
+      padding: globals.pxToRem(10) globals.pxToRem(20);
+      @include globals.font(14, 20, 500);
+      @extend %primary_button_placeholder;
+    }
+
+    &.creating {
+      justify-content: center;
+    }
+  }
+}

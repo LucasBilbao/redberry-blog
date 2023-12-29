@@ -1,0 +1,11 @@
+@if(!(isLoading$ | async)){
+<section class="center">
+  <a [routerLink]="['/blogs']" queryParamsHandling="merge">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </a>
+  <rb-blog [blog]="blog$ | async"></rb-blog>
+  <rb-slider [blogs]="similarBlogs$ | async"></rb-slider>
+</section>
+} @else {
+<rb-loader></rb-loader>
+}

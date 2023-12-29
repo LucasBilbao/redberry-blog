@@ -1,0 +1,10 @@
+@if(!(isLoading$ | async)) {
+<section class="center">
+  <a [routerLink]="['/blogs']" queryParamsHandling="merge">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </a>
+  <rb-create-blog-form [categories]="categories$ | async"></rb-create-blog-form>
+</section>
+} @else {
+<rb-loader></rb-loader>
+}

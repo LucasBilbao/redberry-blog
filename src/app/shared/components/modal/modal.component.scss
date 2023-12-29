@@ -1,0 +1,56 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  div.modal_wrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    div.modal {
+      position: relative;
+      width: globals.pxToRem(480);
+
+      border-radius: globals.pxToRem(12);
+
+      background: white;
+      z-index: 2;
+
+      button {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: globals.pxToRem(24);
+        height: globals.pxToRem(24);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: globals.pxToRem(20) globals.pxToRem(20) 0 0;
+      }
+    }
+  }
+
+  div.overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.185);
+    z-index: 1;
+  }
+}

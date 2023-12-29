@@ -1,0 +1,48 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  display: flex;
+  align-items: center;
+  margin-top: globals.pxToRem(8);
+
+  &.error {
+    color: globals.$ERROR_RED;
+    ::ng-deep {
+      div {
+        background: globals.$ERROR_RED;
+      }
+    }
+  }
+
+  color: globals.$NEUTRAL_GRAY;
+  ::ng-deep {
+    div {
+      background: globals.$NEUTRAL_GRAY;
+    }
+  }
+
+  &.correct {
+    color: globals.$CORRECT_GREEN;
+    ::ng-deep {
+      div {
+        background: globals.$CORRECT_GREEN;
+      }
+    }
+  }
+
+  ::ng-deep {
+    [icon] {
+      width: globals.pxToRem(20);
+      height: globals.pxToRem(20);
+
+      & + [msg] {
+        margin-left: globals.pxToRem(8);
+      }
+    }
+
+    [msg] {
+      display: inline-block;
+      @include globals.font(12, 20, 400);
+    }
+  }
+}

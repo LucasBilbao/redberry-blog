@@ -1,0 +1,22 @@
+<button
+  [style]="
+    (isHovered && isSelectable) || isSelected
+      ? {
+          color: category.text_color,
+          background: category.background_color
+        }
+      : {
+          color: category.background_color,
+          background: category.background_color | hexToRgba : '0.08'
+        }
+  "
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false"
+  (click)="onSelectCategory($event)"
+  type="button"
+>
+  {{ category.title }}
+  @if (isClosable) {
+  <fa-icon [icon]="faXmark"></fa-icon>
+  }
+</button>

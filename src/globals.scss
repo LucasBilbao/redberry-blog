@@ -1,0 +1,46 @@
+$PX_SIZE: 16;
+
+$LINK_PRIMARY_COLOR: #5d37f3;
+$ERROR_RED: #ea1919;
+$NEUTRAL_GRAY: #85858d;
+$CORRECT_GREEN: #14d81c;
+
+@function calcFontSizeInRem($font_size_px) {
+  @return calc($font_size_px / $PX_SIZE);
+}
+
+@function calcLineHeight($font_size_px, $line_height_px) {
+  @return calc($line_height_px / $font_size_px);
+}
+
+@function pxToRem($px_size) {
+  @return #{calc($px_size / $PX_SIZE)}rem;
+}
+
+@mixin fontSizing($font_size_px, $line_height_px) {
+  font-size: #{calcFontSizeInRem($font_size_px)}rem;
+  line-height: calcLineHeight($font_size_px, $line_height_px);
+}
+
+@mixin font($font_size_px, $line_height_px, $font_weight: normal) {
+  font-weight: $font_weight;
+  @include fontSizing($font_size_px, $line_height_px);
+}
+
+%primary_button_placeholder {
+  color: white;
+  background: $LINK_PRIMARY_COLOR;
+  border-radius: pxToRem(8);
+  transition: all 0.25s ease-out;
+
+  &:hover:enabled {
+    color: white;
+    background: #3205e9;
+  }
+
+  &:disabled {
+    background: $NEUTRAL_GRAY;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}

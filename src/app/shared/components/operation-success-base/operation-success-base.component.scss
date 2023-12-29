@@ -1,0 +1,70 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  margin-top: globals.pxToRem(64);
+  margin-bottom: globals.pxToRem(40);
+  padding: 0 globals.pxToRem(24);
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+
+  div.success {
+    div.green_circle {
+      position: relative;
+      margin: auto;
+      width: globals.pxToRem(64);
+      height: globals.pxToRem(64);
+
+      background: globals.$CORRECT_GREEN;
+
+      border-radius: 50%;
+
+      div.check_wrapper {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        animation: appear 1.75s ease 0s 1 forwards;
+        transform-origin: -100% 50%;
+
+        div.check {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: globals.pxToRem(16);
+          aspect-ratio: 1/2;
+          border-radius: 2px;
+
+          $borders: globals.pxToRem(3) solid white;
+          border-right: $borders;
+          border-bottom: $borders;
+
+          transform: rotate(45deg) translate(-120%, -30%);
+        }
+      }
+    }
+
+    p {
+      @include globals.font(20, 28, 700);
+      text-align: center;
+      margin-top: globals.pxToRem(16);
+    }
+  }
+
+  button {
+    @extend %primary_button_placeholder;
+
+    padding: globals.pxToRem(10);
+    text-align: center;
+
+    margin-top: globals.pxToRem(48);
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(100%);
+  }
+}

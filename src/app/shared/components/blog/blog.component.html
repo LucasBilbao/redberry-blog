@@ -1,0 +1,21 @@
+@if(blog){
+<article>
+  <img [src]="blog.image" alt="" />
+  <div class="author_info">
+    <h3>{{ blog.author }}</h3>
+    <div>
+      <time [dateTime]="blog.publish_date">
+        {{ blog.publish_date | date : "dd.MM.YYYY" }}
+      </time>
+      <div class="bullet_point"></div>
+      <p>{{ blog.email }}</p>
+    </div>
+  </div>
+  <h2>{{ blog.title }}</h2>
+  <rb-filters
+    [categories]="blog.categories"
+    [isSelectable]="false"
+  ></rb-filters>
+  <p>{{ blog.description }}</p>
+</article>
+}
