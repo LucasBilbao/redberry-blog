@@ -12,7 +12,6 @@ import { REDBERRY_EMAIL_SUFFIX } from '../../../utils/constants';
 import { BlogCreatingService } from '../../../services/blog-creating/blog-creating.service';
 import { BlogForm } from '../../../interfaces/blog-form.interface';
 import { getFileFromBase64 } from '../../../utils/getFileFromBase64';
-import { Subscribable } from '../subscribable/subscribable';
 
 @Component({
   template: '',
