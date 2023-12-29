@@ -7,6 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ModalService {
   private isModalOpen$$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
+  private isAuthorizing$$: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(true);
   private renderer: Renderer2 = this.rendererFactory.createRenderer(null, null);
 
   constructor(private rendererFactory: RendererFactory2) {}
@@ -17,6 +19,14 @@ export class ModalService {
 
   public set isModalOpen$(isModalOpen: boolean) {
     this.isModalOpen$$.next(isModalOpen);
+  }
+
+  public get isAuthorizing$(): Observable<boolean> {
+    return this.isAuthorizing$$.asObservable();
+  }
+
+  public set isAuthorizing$(isAuthorizing: boolean) {
+    this.isAuthorizing$$.next(isAuthorizing);
   }
 
   public openModal(): void {
