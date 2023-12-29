@@ -6,3 +6,6 @@ export const BEARER_ACCESS_TOKEN =
 export const EMAIL_LOCAL_STORAGE_KEY = 'email';
 
 export const REDBERRY_EMAIL_SUFFIX = '@redberry.ge';
+
+export const BLOG_LOCAL_STORAGE_KEY = 'blog';
+export const IMAGE_LOCAL_STORAGE_KEY = 'image';
