@@ -1,18 +1,16 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function suffixValidator(suffix: string): ValidatorFn {
+export function georgianSymbols(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const { value } = control;
 
-    if (value === '') {
-      return null;
-    }
+    const isValueValid = /^[ა-ჰ\s\.\-]*$/g.test(value);
 
-    return value.endsWith(suffix)
+    return isValueValid
       ? null
       : {
-          suffixError: {
-            message: `${value} should end with ${suffix}`,
+          georgianSymbolsError: {
+            message: 'The input must contain Georgian symbols',
           },
         };
   };
