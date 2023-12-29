@@ -13,11 +13,14 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LoginModalContentComponent } from './components/login-modal-content/login-modal-content.component';
 import { InputErrorComponent } from './components/input-error/input-error.component';
-import { OperationSuccessComponent } from './components/operation-success/operation-success.component';
+import { AuthorizationSuccessComponent } from './components/authorization-success/authorization-success.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BlogComponent } from './components/blog/blog.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { CreateBlogFormComponent } from './components/create-blog-form/create-blog-form.component';
+import { OperationSuccessBaseComponent } from './components/operation-success-base/operation-success-base.component';
+import { PublicationSuccessComponent } from './components/publication-success/publication-success.component';
 
 const components = [
   HeaderComponent,
@@ -30,9 +33,12 @@ const components = [
   ModalComponent,
   LoginModalContentComponent,
   InputErrorComponent,
-  OperationSuccessComponent,
+  AuthorizationSuccessComponent,
   BlogComponent,
   SliderComponent,
+  CreateBlogFormComponent,
+  OperationSuccessBaseComponent,
+  PublicationSuccessComponent,
 ];
 
 const pipes = [HexToRgbaPipe, PunctuationPipe];

@@ -7,14 +7,27 @@
 
   &.error {
     color: globals.$ERROR_RED;
+    ::ng-deep {
+      div {
+        background: globals.$ERROR_RED;
+      }
+    }
   }
 
-  &.neutral {
-    color: globals.$NEUTRAL_GRAY;
+  color: globals.$NEUTRAL_GRAY;
+  ::ng-deep {
+    div {
+      background: globals.$NEUTRAL_GRAY;
+    }
   }
 
   &.correct {
     color: globals.$CORRECT_GREEN;
+    ::ng-deep {
+      div {
+        background: globals.$CORRECT_GREEN;
+      }
+    }
   }
 
   ::ng-deep {

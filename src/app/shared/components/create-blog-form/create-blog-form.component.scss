@@ -1,0 +1,316 @@
+@use "../../../../globals.scss" as globals;
+
+%default_input {
+  padding: globals.pxToRem(12) globals.pxToRem(16);
+  width: 100%;
+  box-sizing: border-box;
+  background: #f6f5ff;
+  border-radius: globals.pxToRem(12);
+  border: globals.pxToRem(1) solid #e4e3eb;
+  @include globals.font(14, 20, 400);
+  transition: border 0.25s ease-out;
+
+  &:focus {
+    border: globals.pxToRem(1.5) solid globals.$LINK_PRIMARY_COLOR;
+  }
+
+  &.error {
+    background: #faebec;
+
+    &:focus {
+      border: globals.pxToRem(1.5) solid globals.$ERROR_RED;
+    }
+  }
+}
+
+%invalid_placeholder {
+  background: rgb(252, 237, 237);
+  border-color: globals.$ERROR_RED;
+}
+
+%valid_placeholder {
+  background: #effcef;
+  border-color: globals.$CORRECT_GREEN;
+}
+
+:host {
+  display: block;
+  margin: auto;
+  max-width: globals.pxToRem(720);
+
+  form {
+    fieldset {
+      width: 100%;
+      legend {
+        @include globals.font(32, 40, 700);
+      }
+
+      label {
+        @include globals.font(14, 20, 500);
+      }
+      input:not([type="checkbox"]),
+      textarea {
+        @extend %default_input;
+        input::placeholder {
+          color: globals.$NEUTRAL_GRAY;
+          display: inline-block;
+        }
+
+        &:not([type="date"]) {
+          &:invalid.ng-dirty.ng-invalid,
+          &.ng-dirty.ng-invalid {
+            @extend %invalid_placeholder;
+          }
+
+          &:valid.ng-dirty.ng-valid,
+          &.ng-dirty.ng-valid {
+            @extend %valid_placeholder;
+          }
+        }
+
+        &[type="date"] {
+          &:invalid.ng-touched.ng-invalid,
+          &.ng-touched.ng-invalid {
+            @extend %invalid_placeholder;
+          }
+
+          &:valid.ng-touched.ng-valid,
+          &.ng-touched.ng-valid {
+            @extend %valid_placeholder;
+          }
+        }
+      }
+
+      div.media {
+        margin-top: globals.pxToRem(40);
+
+        label {
+          @include globals.font(14, 20, 500);
+        }
+
+        &__input {
+          margin-top: globals.pxToRem(8);
+          width: 100%;
+          height: globals.pxToRem(180);
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          border-radius: globals.pxToRem(12);
+          border: globals.pxToRem(1) dashed #85858d;
+          background: #85858d10;
+
+          cursor: pointer;
+
+          &.inserted {
+            flex-direction: row;
+            padding: globals.pxToRem(16);
+            justify-content: flex-start;
+            height: fit-content;
+            border-color: rgba(0, 0, 0, 0);
+
+            img {
+              width: globals.pxToRem(24);
+              aspect-ratio: 1/1;
+
+              object-fit: cover;
+            }
+            p {
+              display: inline-block;
+              margin-top: 0;
+              margin-left: globals.pxToRem(12);
+            }
+
+            button {
+              margin-left: auto;
+            }
+          }
+
+          p {
+            @include globals.font(14, 20, 400);
+            margin-top: globals.pxToRem(24);
+            text-align: center;
+          }
+
+          input[hidden] {
+            display: none;
+          }
+        }
+      }
+
+      div.bullet_point[icon] {
+        $size: globals.pxToRem(3);
+        width: $size;
+        height: $size;
+
+        border-radius: 50%;
+      }
+      div.author_title {
+        display: flex;
+        margin-top: globals.pxToRem(24);
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          flex-grow: 1;
+
+          & + div {
+            margin-left: globals.pxToRem(24);
+          }
+
+          div.validations {
+            padding-left: globals.pxToRem(5);
+          }
+        }
+      }
+
+      div.description {
+        margin-top: globals.pxToRem(24);
+
+        textarea {
+          outline: none;
+          margin-top: globals.pxToRem(8);
+          aspect-ratio: 600/124;
+          resize: none;
+        }
+      }
+
+      div.date_categories {
+        display: flex;
+        margin-top: globals.pxToRem(24);
+        p {
+          @include globals.font(14, 20, 500);
+        }
+        & > div {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          &.date + div.categories {
+            margin-left: globals.pxToRem(24);
+          }
+
+          &.date {
+            input {
+              min-width: globals.pxToRem(211);
+            }
+          }
+
+          input,
+          div.selected {
+            margin-top: globals.pxToRem(8);
+          }
+
+          div.selected {
+            color: globals.$NEUTRAL_GRAY;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            @extend %default_input;
+
+            padding: 0 globals.pxToRem(16);
+            height: globals.pxToRem(44);
+            cursor: pointer;
+
+            &.invalid {
+              background: rgb(252, 237, 237);
+              border-color: globals.$ERROR_RED;
+            }
+
+            &.valid {
+              background: #effcef;
+              border-color: globals.$CORRECT_GREEN;
+            }
+
+            p {
+              flex-grow: 1;
+            }
+
+            &__categories {
+              min-width: 157.5px;
+              padding: 0;
+              position: relative;
+              height: 100%;
+              width: 100%;
+
+              &__wrapper {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                overflow-x: hidden;
+                max-width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                column-gap: globals.pxToRem(10);
+                white-space: nowrap;
+              }
+              & + button {
+                margin-left: globals.pxToRem(8);
+              }
+            }
+
+            & > button {
+              transition: all 0.3s ease 0s;
+              margin-left: globals.pxToRem(8);
+
+              &.expanded {
+                transform: rotate(180deg);
+              }
+            }
+          }
+
+          div.categories_dropdown {
+            position: absolute;
+            top: globals.pxToRem(78);
+            background: #f6f5ff;
+
+            height: globals.pxToRem(250);
+            width: 100%;
+            transition: all 0.3s ease-out 0s;
+            transform: scaleY(0);
+            transform-origin: top center;
+
+            display: flex;
+            gap: globals.pxToRem(13);
+            flex-wrap: wrap;
+            padding: globals.pxToRem(10) globals.pxToRem(16);
+
+            border-radius: globals.pxToRem(12);
+
+            overflow-y: scroll;
+            z-index: 1;
+
+            &.expanded {
+              transform: scaleY(1);
+            }
+          }
+        }
+      }
+
+      div.email {
+        margin-top: globals.pxToRem(24);
+        display: flex;
+        flex-direction: column;
+
+        input {
+          margin-top: globals.pxToRem(8);
+          max-width: globals.pxToRem(347);
+        }
+      }
+
+      button[type="submit"] {
+        display: block;
+        @extend %primary_button_placeholder;
+        padding: globals.pxToRem(10) globals.pxToRem(95.5);
+        margin: globals.pxToRem(40) 0 0 auto;
+      }
+    }
+  }
+}
