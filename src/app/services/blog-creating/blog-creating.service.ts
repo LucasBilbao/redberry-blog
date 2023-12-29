@@ -56,7 +56,6 @@ export class BlogCreatingService {
       this.blogsFacade.hasStartedPosting$,
       this.blogsFacade.hasFinishedPosting$,
     ]).subscribe(([hasStartedPosting, hasFinishedPosting]) => {
-      debugger;
       if (!hasStartedPosting || !hasFinishedPosting) {
         return;
       }
