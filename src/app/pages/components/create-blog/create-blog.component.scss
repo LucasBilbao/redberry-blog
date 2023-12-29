@@ -1,0 +1,29 @@
+@use "../../../../globals.scss" as globals;
+
+:host {
+  position: relative;
+
+  section.center {
+    margin-top: globals.pxToRem(40);
+    a {
+      @extend %primary_button_placeholder;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: globals.pxToRem(44);
+      height: globals.pxToRem(44);
+      background: white;
+      border-radius: 50%;
+      margin-left: globals.pxToRem(76);
+      color: black;
+
+      &:hover {
+        background: #4721dd;
+        color: white;
+      }
+    }
+  }
+}

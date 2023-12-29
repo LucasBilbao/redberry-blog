@@ -31,4 +31,14 @@ export const BlogsActions = {
     BlogsConstants.GET_SINGLE_BLOG_FAIL,
     props<{ error: string }>()
   ),
+
+  // Post Blog
+  postBlog: createAction(BlogsConstants.POST_BLOG, props<{ blog: FormData }>()),
+
+  postBlogSuccess: createAction(BlogsConstants.POST_BLOG_SUCCESS),
+
+  postBlogFail: createAction(
+    BlogsConstants.POST_BLOG_FAIL,
+    props<{ error: string }>()
+  ),
 };

@@ -1,0 +1,196 @@
+@if (categories) {
+<form
+  (submit)="onSubmit($event)"
+  (change)="autoSaveBlog()"
+  [formGroup]="blogForm"
+  #formControl="ngForm"
+>
+  <fieldset>
+    <legend>ბლოგის დამატება</legend>
+
+    <div class="media">
+      <label for="image">ატვირთეთ ფოტო</label>
+      <div
+        class="media__input"
+        [class.inserted]="image.value"
+        (click)="fileInput.click()"
+        (dragover)="$event.preventDefault()"
+        (change)="onFileChange($event)"
+      >
+        @if(!image.value) {
+        <img src="../../../../assets/folder-add.png" alt="Folder add image" />
+        <p>
+          ჩააგეთ ფაილი აქ ან <u><b>აირჩიეთ ფაილი</b></u>
+        </p>
+        } @else {
+        <img src="../../../../assets/gallery.png" alt="Gallery image" />
+        <p>{{ image.value.name }}</p>
+        <button type="button" (click)="onRemoveFile($event)">
+          <fa-icon [icon]="faXmark"></fa-icon>
+        </button>
+        }
+        <input
+          type="file"
+          accept="image/*"
+          id="image"
+          hidden
+          #fileInput
+          value="C:\fakepath\camera_lense_0.jpeg"
+        />
+      </div>
+    </div>
+
+    <div class="author_title">
+      <div class="author">
+        <label for="author">ავტორი *</label>
+        <input
+          type="text"
+          id="author"
+          placeholder="შეიყვანეთ ავტორი"
+          formControlName="author"
+        />
+        <div class="validations">
+          <rb-input-error
+            [class.error]="(author.dirty || author.value !== '') && (author.errors?.['minlength'] || author.errors?.['required'])"
+            [class.correct]="(author.dirty || author.value !== '') && (!author.errors?.['minlength'] && !author.errors?.['required'])"
+          >
+            <div class="bullet_point" icon></div>
+            <p msg>მინიმუმ 4 სიმბოლო</p>
+          </rb-input-error>
+          <rb-input-error
+            [class.error]="(author.dirty || author.value !== '') && author.errors?.['minWordsError']"
+            [class.correct]="(author.dirty || author.value !== '') && !author.errors?.['minWordsError']"
+          >
+            <div class="bullet_point" icon></div>
+            <p msg>მინიმუმ ორი სიტყვა</p>
+          </rb-input-error>
+          <rb-input-error
+            [class.error]="(author.dirty || author.value !== '') && author.errors?.['georgianSymbolsError']"
+            [class.correct]="(author.dirty || author.value !== '') && !author.errors?.['georgianSymbolsError']"
+          >
+            <div class="bullet_point" icon></div>
+            <p msg>მხოლოდ ქართული სიმბოლოები</p>
+          </rb-input-error>
+        </div>
+      </div>
+      <div class="title">
+        <label for="title">სათაური *</label>
+        <input
+          type="text"
+          id="title"
+          placeholder="შეიყვანეთ სათაური"
+          formControlName="title"
+        />
+        <div class="validations">
+          <rb-input-error
+            [class.error]="(title.dirty || title.value !== '') && title.errors?.['minlength']"
+            [class.correct]="(title.dirty || title.value !== '') && !title.errors?.['minlength']"
+          >
+            <div class="bullet_point" icon></div>
+            <p msg>მინიმუმ 4 სიმბოლო</p>
+          </rb-input-error>
+        </div>
+      </div>
+    </div>
+
+    <div class="description">
+      <label for="description">აღწერა *</label>
+      <textarea
+        name="description"
+        id="description"
+        placeholder="შეიყვანეთ აღწერა"
+        formControlName="description"
+      ></textarea>
+      <div class="validations">
+        <rb-input-error>
+          <div class="bullet_point" icon></div>
+          <p msg>მინიმუმ 4 სიმბოლო</p>
+        </rb-input-error>
+      </div>
+    </div>
+
+    <div class="date_categories">
+      <div class="date">
+        <label for="publish_date">გამოქვეყნების თარიღი *</label>
+        <input
+          type="text"
+          (focus)="dateInput.type = 'date'"
+          id="publish_date"
+          placeholder="შეიყვანეთ გამოქვეყნების თარიღი"
+          formControlName="publish_date"
+          #dateInput
+        />
+      </div>
+      <div class="categories">
+        <p>კატეგორია *</p>
+        <div
+          class="selected"
+          (click)="toggleDropdown()"
+          [class.invalid]="hasCategoryBeenChosen && categoriesC.invalid"
+          [class.valid]="hasCategoryBeenChosen && categoriesC.valid"
+        >
+          @if (selectedCategoriesIds.size === 0) {
+          <p>აირჩიეთ კატეგორიები</p>
+          } @else {
+          <div class="selected__categories">
+            <div class="selected__categories__wrapper">
+              @for (category of categories; track $index) {
+              @if(selectedCategoriesIds.has(category.id)) {
+
+              <rb-filter
+                [category]="category"
+                [isSelected]="true"
+                [isClosable]="true"
+                (selectCategory)="selectCategory($event)"
+              ></rb-filter>
+              } }
+            </div>
+          </div>
+          }
+          <button type="button" [class.expanded]="isDropdownExpanded$ | async">
+            <fa-icon [icon]="faChevronDown"></fa-icon>
+          </button>
+        </div>
+        <div
+          class="categories_dropdown"
+          [class.expanded]="isDropdownExpanded$ | async"
+        >
+          @for (category of categories; track $index) {
+          <label [for]="category.id">
+            <rb-filter
+              [category]="category"
+              [isSelected]="categoryInput.checked"
+              (selectCategory)="selectCategory($event)"
+            ></rb-filter>
+          </label>
+          <input
+            type="checkbox"
+            [id]="category.id"
+            [checked]="selectedCategoriesIds.has(category.id)"
+            #categoryInput
+          />
+          }
+        </div>
+      </div>
+    </div>
+    <div class="email">
+      <label for="email">ელ-ფოსტა</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Example@redbery.ge"
+        formControlName="email"
+        [class.ng-valid]="email.valid && email.value !== ''"
+      />
+      @if (email.invalid && email.dirty) {
+      <rb-input-error class="error">
+        <p icon><fa-icon [icon]="faCircleExclamation"></fa-icon></p>
+        <p msg>{{ "მეილი უნდა მთავრდებოდეს @redberry.ge-ით" }}</p>
+      </rb-input-error>
+      }
+    </div>
+
+    <button type="submit" [disabled]="formControl.invalid">გამოქვეყნება</button>
+  </fieldset>
+</form>
+}

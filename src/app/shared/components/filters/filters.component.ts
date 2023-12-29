@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class FiltersComponent {
   @Input() public categories!: Category[] | null;
   @Input() public isSelectable: boolean = true;
+  @Input() public isClosable: boolean = false;
 
   public selectedCategories: Observable<Set<number>> =
     this.filterService.selectedCategories$;

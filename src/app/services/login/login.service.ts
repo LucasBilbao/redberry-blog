@@ -24,6 +24,10 @@ export class LoginService {
     return this.isAuthorized$$.asObservable();
   }
 
+  public get isAuthorized(): boolean {
+    return this.isAuthorized$$.value;
+  }
+
   public set isAuthorized$(isAuthorized: boolean) {
     this.isAuthorized$$.next(isAuthorized);
   }

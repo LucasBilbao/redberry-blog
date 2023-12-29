@@ -12,7 +12,11 @@
   "
   (mouseenter)="isHovered = true"
   (mouseleave)="isHovered = false"
-  (click)="onSelectCategory()"
+  (click)="onSelectCategory($event)"
+  type="button"
 >
   {{ category.title }}
+  @if (isClosable) {
+  <fa-icon [icon]="faXmark"></fa-icon>
+  }
 </button>

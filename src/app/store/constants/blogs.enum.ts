@@ -6,4 +6,8 @@ export enum BlogsConstants {
   GET_SINGLE_BLOG = '[Blogs] Get Single Blog',
   GET_SINGLE_BLOG_SUCCESS = '[Blogs] Get Single Blog Success',
   GET_SINGLE_BLOG_FAIL = '[Blogs] Get Single Blog Fail',
+
+  POST_BLOG = '[Blogs] Post Blog',
+  POST_BLOG_SUCCESS = '[Blogs] Post Blog Success',
+  POST_BLOG_FAIL = '[Blogs] Post Blog Fail',
 }

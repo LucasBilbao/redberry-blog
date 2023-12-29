@@ -17,4 +17,8 @@ export class BlogsService {
   public getSingleBlog(id: string | number): Observable<Blog> {
     return this.http.get<Blog>(`${BlogEndpoints.BLOGS}/${id}`);
   }
+
+  public postBlog({ blog }: { blog: FormData }) {
+    return this.http.post(BlogEndpoints.BLOGS, blog);
+  }
 }

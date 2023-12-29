@@ -2,14 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogsComponent } from './pages/components/blogs/blogs.component';
 import { SingleBlogComponent } from './pages/components/single-blog/single-blog.component';
-import { PagesWithHeaderComponent } from './pages/components/pages-with-header/pages-with-header.component';
+import { PagesWrapperComponent } from './pages/components/pages-wrapper/pages-wrapper.component';
+import { CreateBlogComponent } from './pages/components/create-blog/create-blog.component';
+import { authorizedGuard } from './guards/authorized-guard.guard';
 
 const routes: Routes = [
   {
     path: 'blogs',
-    component: PagesWithHeaderComponent,
+    component: PagesWrapperComponent,
     children: [
       { path: '', component: BlogsComponent },
+      {
+        path: 'create',
+        component: CreateBlogComponent,
+        canActivate: [authorizedGuard()],
+      },
       { path: ':id', component: SingleBlogComponent },
     ],
   },
