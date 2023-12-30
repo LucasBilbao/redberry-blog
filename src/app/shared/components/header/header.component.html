@@ -1,6 +1,6 @@
 <div class="header_wrapper" [class.creating]="isInCreationMode$ | async">
   <a [routerLink]="['/blogs']" queryParamsHandling="merge">
-    <img src="../../../../assets/LOGO-02 3.jpg" alt="Redberry Company Logo" />
+    <img src="assets/LOGO-02 3.jpg" alt="Redberry Company Logo" />
   </a>
   @if(!(isInCreationMode$ | async)){ @if(!(isAuthorized$ | async)){
   <button (click)="openModal()">შესვლა</button>

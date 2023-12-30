@@ -18,12 +18,12 @@
         (change)="onFileChange($event)"
       >
         @if(!image.value) {
-        <img src="../../../../assets/folder-add.png" alt="Folder add image" />
+        <img src="assets/folder-add.png" alt="Folder add image" />
         <p>
           ჩააგეთ ფაილი აქ ან <u><b>აირჩიეთ ფაილი</b></u>
         </p>
         } @else {
-        <img src="../../../../assets/gallery.png" alt="Gallery image" />
+        <img src="assets/gallery.png" alt="Gallery image" />
         <p>{{ image.value.name }}</p>
         <button type="button" (click)="onRemoveFile($event)">
           <fa-icon [icon]="faXmark"></fa-icon>
